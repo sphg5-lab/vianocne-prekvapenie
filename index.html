@@ -83,17 +83,18 @@ for(let i=0;i<50;i++){
 </section>
 
 <!-- Obálka -->
-<section id="letterPage">
-    <div class="envelope" onclick="openLetter()">
+<section id="letterPage" style="display:flex; flex-direction:column; align-items:center;">
+    <div class="envelope" onclick="openLetter()" style="margin-bottom:20px;">
         <div class="paper" id="paper">
             <h2>Moja láska ❤️</h2>
             <p>Prajem ti tie najkrajšie Vianoce plné lásky, úsmevu a radosti.</p>
             <p>Ďakujem, že si môj najväčší darček v živote.</p>
             <p>Milujem ťa viac než sa dá napísať slovami 🎄</p>
             <p>Veľmi ťa ľúbim najviac na svete a nikdy ťa neopustím 😘</p>
-            <button id="finalBtn" style="display:none; padding:15px 40px; font-size:20px; margin-top:20px;" onclick="goToFinal()">Ďalej</button>
         </div>
     </div>
+    <!-- Tlačidlo pod obálkou -->
+    <button id="finalBtn" style="display:none; padding:20px 50px; font-size:22px;" onclick="goToFinal()">Ďalej</button>
 </section>
 
 <!-- Posledná stránka -->
@@ -128,8 +129,8 @@ function goToLetter(){
 }
 
 function openLetter(){
-    document.getElementById("paper").style.bottom="-20px";
-    document.getElementById("finalBtn").style.display="inline-block";
+    document.getElementById("paper").style.bottom="-20px"; // papier vysunie
+    document.getElementById("finalBtn").style.display="block"; // tlačidlo sa objaví pod obálkou
 }
 
 function goToFinal(){
