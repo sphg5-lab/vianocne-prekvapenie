@@ -13,168 +13,38 @@ body {
     overflow-x: hidden;
     position: relative;
 }
-
-/* Padajúci sneh */
-.snowflake {
-    position: absolute;
-    color: #fff;
-    font-size: 1em;
-    top: -10px;
-    z-index: 9999;
-    user-select: none;
-    pointer-events: none;
-    animation-name: fall;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-@keyframes fall {
-    0% {transform: translateY(0) rotate(0deg);}
-    100% {transform: translateY(110vh) rotate(360deg);}
-}
-
-/* Prechody sekcií */
-section {
-    display: none;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    color: white;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 1s;
-}
-section.active {
-    display:flex;
-    opacity: 1;
-}
-
-button {
-    padding: 15px 40px;
-    font-size: 20px;
-    border: none;
-    border-radius: 30px;
-    background: #ff4d6d;
-    color: white;
-    cursor: pointer;
-    margin-top: 30px;
-    transition: 0.3s;
-}
+.snowflake {position:absolute;color:#fff;font-size:1em;top:-10px;z-index:9999;user-select:none;pointer-events:none;animation-name:fall;animation-timing-function:linear;animation-iteration-count:infinite;}
+@keyframes fall {0% {transform: translateY(0) rotate(0deg);}100% {transform: translateY(110vh) rotate(360deg);}}
+section {display:none;min-height:100vh;justify-content:center;align-items:center;flex-direction:column;text-align:center;color:white;padding:20px;opacity:0;transition:opacity 1s;}
+section.active {display:flex;opacity:1;}
+button {padding:15px 40px;font-size:20px;border:none;border-radius:30px;background:#ff4d6d;color:white;cursor:pointer;margin-top:30px;transition:0.3s;}
 button:hover {background:#ff1e4d;}
-
-/* Kartičky väčšie a písmo väčšie */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 220px);
-    gap: 25px;
-    margin-top: 30px;
-    position: relative;
-}
-.card {
-    width: 220px;
-    height: 270px;
-    perspective: 1000px;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: showCard 0.6s forwards;
-}
+.cards {display:grid;grid-template-columns:repeat(3,220px);gap:25px;margin-top:30px;position:relative;}
+.card {width:220px;height:270px;perspective:1000px;cursor:pointer;opacity:0;transform:translateY(50px);animation:showCard 0.6s forwards;}
 .card:nth-child(1){animation-delay:0.1s}
 .card:nth-child(2){animation-delay:0.2s}
 .card:nth-child(3){animation-delay:0.3s}
 .card:nth-child(4){animation-delay:0.4s}
 .card:nth-child(5){animation-delay:0.5s}
 .card:nth-child(6){animation-delay:0.6s}
-
-@keyframes showCard {
-    to {opacity:1; transform:translateY(0);}
-}
-.card-inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    position: relative;
-}
+@keyframes showCard {to {opacity:1; transform:translateY(0);}}
+.card-inner {width:100%;height:100%;transition:transform 0.8s;transform-style:preserve-3d;position:relative;}
 .card.flipped .card-inner {transform: rotateY(180deg);}
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    overflow: hidden;
-}
-.card-front {
-    background: #fff5e6; 
-    color: #b11226; 
-    border: 3px solid #b11226; 
-    box-shadow: 0 0 15px #ffecb3;
-}
-.card-back {
-    background: linear-gradient(135deg, #b11226, #138a36);
-    color: white;
-    transform: rotateY(180deg);
-    box-shadow: 0 0 15px #fff;
-    font-size: 26px;
-    font-weight: bold;
-    position: relative;
-}
-
-/* Iskričky */
-.sparkle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: yellow;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: blink 1s infinite alternate;
-}
-@keyframes blink {
-    from {opacity:0.2;}
-    to {opacity:1;}
-}
-
+.card-front,.card-back {position:absolute;width:100%;height:100%;border-radius:15px;backface-visibility:hidden;display:flex;justify-content:center;align-items:center;font-size:30px;font-weight:bold;overflow:hidden;}
+.card-front {background:#fff5e6;color:#b11226;border:3px solid #b11226;box-shadow:0 0 15px #ffecb3;}
+.card-back {background:linear-gradient(135deg,#b11226,#138a36);color:white;transform:rotateY(180deg);box-shadow:0 0 15px #fff;font-size:26px;font-weight:bold;position:relative;}
+.sparkle {position:absolute;width:6px;height:6px;background:yellow;border-radius:50%;opacity:0.8;animation:blink 1s infinite alternate;}
+@keyframes blink {from {opacity:0.2;}to {opacity:1;}}
 #nextAfterCards {display:none;}
-
-/* Obálka väčšia a lepšia animácia */
-.envelope {
-    width: 360px;
-    height: 250px;
-    background: #c1121f;
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor:pointer;
-    box-shadow: 0 0 20px #fff5e6;
-}
-.paper {
-    width: 300px;
-    height: 360px;
-    background: #fff;
-    color: #000;
-    position: absolute;
-    bottom: -360px;
-    left: 30px;
-    padding: 25px;
-    box-sizing: border-box;
-    border-radius:12px;
-    transition: bottom 1.5s;
-}
-.paper h2 {color: #c1121f;}
-.paper p {margin-top:12px; line-height:1.5;}
+.envelope {width:360px;height:250px;background:#c1121f;position:relative;border-radius:12px;overflow:hidden;cursor:pointer;box-shadow:0 0 20px #fff5e6;}
+.paper {width:300px;height:360px;background:#fff;color:#000;position:absolute;bottom:-360px;left:30px;padding:25px;box-sizing:border-box;border-radius:12px;transition:bottom 1.5s;}
+.paper h2 {color:#c1121f;}
+.paper p {margin-top:12px;line-height:1.5;}
 </style>
 </head>
 <body>
 
-<!-- Hudba na pozadí -->
+<!-- Hudba -->
 <audio autoplay loop>
   <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3" type="audio/mpeg">
 </audio>
@@ -194,7 +64,7 @@ for(let i=0;i<50;i++){
 
 <!-- Úvod -->
 <section id="intro" class="active">
-    <h1 style="font-size: 60px; text-shadow: 2px 2px 10px #000;">Pre moju<br>najkrajšiu ženu ❤️</h1>
+    <h1 style="font-size:60px;text-shadow:2px 2px 10px #000;">Pre moju<br>najkrajšiu ženu ❤️</h1>
     <button onclick="goToCards()">Ďalej</button>
 </section>
 
@@ -217,18 +87,10 @@ for(let i=0;i<50;i++){
     <div class="envelope" onclick="openLetter()">
         <div class="paper" id="paper">
             <h2>Moja láska ❤️</h2>
-            <p>
-                Prajem ti tie najkrajšie Vianoce plné lásky, úsmevu a radosti😁.
-            </p>
-            <p>
-                Ďakujem, že si môj najväčší darček v živote😘❤️.
-            </p>
-            <p>
-                Milujem ťa viac než sa dá napísať slovami 🎄
-            </p>
-            <p>
-                Veľmi ťa ľúbim najviac na svete a nikdy ťa neopustím 😘
-            </p>
+            <p>Prajem ti tie najkrajšie Vianoce plné lásky, úsmevu a radosti😁.</p>
+            <p>Ďakujem, že si môj najväčší darček v živote😘❤️🥰.</p>
+            <p>Milujem ťa viac než sa dá napísať slovami 🎄</p>
+            <p>Veľmi ťa ľúbim najviac na svete a nikdy ťa neopustím 😘</p>
             <button id="finalBtn" style="display:none; padding:15px 40px; font-size:20px; margin-top:20px;" onclick="goToFinal()">Ďalej</button>
         </div>
     </div>
@@ -236,8 +98,8 @@ for(let i=0;i<50;i++){
 
 <!-- Posledná stránka -->
 <section id="finalPage">
-    <h1 style="font-size:50px; color:white; text-shadow:2px 2px 8px #000;">
-        Strašne ťa veľmi ľúbim a zapamätaj si, že som iba celý tvoj 💋💋💋
+    <h1 style="font-size:60px; color:#ff1e4d; text-shadow:2px 2px 10px #000;">
+        ❤️🎄 Strašne ťa veľmi ľúbim a zapamätaj si, že som iba celý tvoj 💋💋💋 🎄❤️
     </h1>
 </section>
 
@@ -275,7 +137,6 @@ function goToFinal(){
     document.getElementById("finalPage").classList.add("active");
 }
 
-// Iskričky
 function addSparklers(){
     const cards=document.querySelectorAll(".card-back");
     cards.forEach(card=>{
