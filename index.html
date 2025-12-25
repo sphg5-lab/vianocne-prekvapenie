@@ -63,17 +63,17 @@ button {
 }
 button:hover {background:#ff1e4d;}
 
-/* Kartičky väčšie */
+/* Kartičky väčšie a písmo väčšie */
 .cards {
     display: grid;
-    grid-template-columns: repeat(3, 200px);
+    grid-template-columns: repeat(3, 220px);
     gap: 25px;
     margin-top: 30px;
     position: relative;
 }
 .card {
-    width: 200px;
-    height: 250px;
+    width: 220px;
+    height: 270px;
     perspective: 1000px;
     cursor: pointer;
     opacity: 0;
@@ -107,7 +107,7 @@ button:hover {background:#ff1e4d;}
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 26px;
+    font-size: 30px;
     font-weight: bold;
     overflow: hidden;
 }
@@ -122,7 +122,7 @@ button:hover {background:#ff1e4d;}
     color: white;
     transform: rotateY(180deg);
     box-shadow: 0 0 15px #fff;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
     position: relative;
 }
@@ -146,8 +146,8 @@ button:hover {background:#ff1e4d;}
 
 /* Obálka väčšia a lepšia animácia */
 .envelope {
-    width: 320px;
-    height: 220px;
+    width: 360px;
+    height: 250px;
     background: #c1121f;
     position: relative;
     border-radius: 12px;
@@ -156,13 +156,13 @@ button:hover {background:#ff1e4d;}
     box-shadow: 0 0 20px #fff5e6;
 }
 .paper {
-    width: 280px;
-    height: 320px;
+    width: 300px;
+    height: 360px;
     background: #fff;
     color: #000;
     position: absolute;
-    bottom: -320px;
-    left: 20px;
+    bottom: -360px;
+    left: 30px;
     padding: 25px;
     box-sizing: border-box;
     border-radius:12px;
@@ -218,15 +218,27 @@ for(let i=0;i<50;i++){
         <div class="paper" id="paper">
             <h2>Moja láska ❤️</h2>
             <p>
-                Prajem ti tie najkrajšie Vianoce plné lásky, úsmevu a radosti.  
-                Ďakujem, že si môj najväčší darček v živote.
+                Prajem ti tie najkrajšie Vianoce plné lásky, úsmevu a radosti😁.
             </p>
             <p>
-                Milujem ťa viac než sa dá napísať slovami 🎄✨
+                Ďakujem, že si môj najväčší darček v živote😘❤️.
             </p>
-            <p>Posuň obálku a nech sa ti splnia všetky sny 💖</p>
+            <p>
+                Milujem ťa viac než sa dá napísať slovami 🎄
+            </p>
+            <p>
+                Veľmi ťa ľúbim najviac na svete a nikdy ťa neopustím 😘
+            </p>
+            <button id="finalBtn" style="display:none; padding:15px 40px; font-size:20px; margin-top:20px;" onclick="goToFinal()">Ďalej</button>
         </div>
     </div>
+</section>
+
+<!-- Posledná stránka -->
+<section id="finalPage">
+    <h1 style="font-size:50px; color:white; text-shadow:2px 2px 8px #000;">
+        Strašne ťa veľmi ľúbim a zapamätaj si, že som iba celý tvoj 💋💋💋
+    </h1>
 </section>
 
 <script>
@@ -255,9 +267,15 @@ function goToLetter(){
 
 function openLetter(){
     document.getElementById("paper").style.bottom="-20px";
+    document.getElementById("finalBtn").style.display="inline-block";
 }
 
-// Iskričky na kartičkách
+function goToFinal(){
+    document.getElementById("letterPage").classList.remove("active");
+    document.getElementById("finalPage").classList.add("active");
+}
+
+// Iskričky
 function addSparklers(){
     const cards=document.querySelectorAll(".card-back");
     cards.forEach(card=>{
