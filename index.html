@@ -19,6 +19,10 @@ body {
     text-align:center;
 }
 
+/* Padajúci sneh */
+.snowflake {position:absolute;color:#fff;font-size:1em;top:-10px;z-index:9999;user-select:none;pointer-events:none;animation-name:fall;animation-timing-function:linear;animation-iteration-count:infinite;}
+@keyframes fall {0% {transform: translateY(0) rotate(0deg);}100% {transform: translateY(110vh) rotate(360deg);}}
+
 /* Úvod */
 #intro {display:flex; flex-direction:column; align-items:center;}
 #intro h1 {font-size:60px; text-shadow:2px 2px 10px #000; margin-bottom:30px;}
@@ -42,6 +46,10 @@ body {
 .card-front {background:#fff5e6;color:#b11226;border:3px solid #b11226;box-shadow:0 0 15px #ffecb3;}
 .card-back {background:linear-gradient(135deg,#b11226,#138a36);color:white;transform:rotateY(180deg);font-size:26px; font-weight:bold;position:relative;}
 
+/* Tlačidlo pod kartičkami */
+#nextAfterCards {display:none; padding:20px 50px;font-size:22px; border:none; border-radius:30px; background:#ff4d6d; color:white; cursor:pointer; transition:0.3s; margin-top:20px;}
+#nextAfterCards:hover {background:#ff1e4d;}
+
 /* Obálka */
 #letterPage {display:none; flex-direction:column; align-items:center;}
 .envelope {width:360px;height:250px;background:#c1121f;position:relative;border-radius:12px;overflow:hidden;cursor:pointer;box-shadow:0 0 20px #fff5e6;margin-bottom:20px;}
@@ -56,6 +64,19 @@ body {
 </style>
 </head>
 <body>
+
+<!-- Padajúci sneh -->
+<script>
+for(let i=0;i<50;i++){
+    let snow=document.createElement("div");
+    snow.className="snowflake";
+    snow.style.left=Math.random()*100+"vw";
+    snow.style.fontSize=10+Math.random()*20+"px";
+    snow.style.animationDuration=5+Math.random()*10+"s";
+    snow.innerText="❄️";
+    document.body.appendChild(snow);
+}
+</script>
 
 <!-- Úvod -->
 <div id="intro">
@@ -74,7 +95,7 @@ body {
         <div class="card" onclick="flip(this)"><div class="card-inner"><div class="card-front">?</div><div class="card-back">najkrajší 🌟</div></div></div>
         <div class="card" onclick="flip(this)"><div class="card-inner"><div class="card-front">?</div><div class="card-back">darček 🎁</div></div></div>
     </div>
-    <button id="nextAfterCards" style="display:none;" onclick="goToLetter()">Ďalej</button>
+    <button id="nextAfterCards" onclick="goToLetter()">Ďalej</button>
 </div>
 
 <!-- Obálka -->
@@ -82,7 +103,7 @@ body {
     <div class="envelope" onclick="openLetter()">
         <div class="paper" id="paper">
             <h2>Moja láska ❤️</h2>
-            <p>Prajem ti tie najkrajšie Vianoce plné lásky, úsmevu a radosti.</p>
+            <p>Prajem ti tie najkrajššie Vianoce plné lásky, úsmevu a radosti.</p>
             <p>Ďakujem, že si môj najväčší darček v živote.</p>
             <p>Milujem ťa viac než sa dá napísať slovami 🎄</p>
             <p>Veľmi ťa ľúbim najviac na svete a nikdy ťa neopustím 😘</p>
@@ -121,7 +142,7 @@ function openLetter(){
 }
 
 function showFinalMessage(){
-    document.getElementById("finalMessage").style.display="block"; // zobrazí finálny text
+    document.getElementById("finalMessage").style.display="block"; // finálny text
     document.getElementById("finalBtn").style.display="none"; // schová tlačidlo
 }
 </script>
