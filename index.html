@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Pre moju najkrajšiu ženu ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <style>
 body {
     margin:0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Dancing Script', cursive;
     background: url("https://images.unsplash.com/photo-1608889170435-bd59853d2e02?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;
     min-height: 100vh;
     overflow-x: hidden;
@@ -31,6 +32,7 @@ body {
     100% {transform: translateY(110vh) rotate(360deg);}
 }
 
+/* Prechody sekcií */
 section {
     display: none;
     min-height: 100vh;
@@ -40,12 +42,17 @@ section {
     text-align: center;
     color: white;
     padding: 20px;
+    opacity: 0;
+    transition: opacity 1s;
 }
-section.active {display:flex;}
+section.active {
+    display:flex;
+    opacity: 1;
+}
 
 button {
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 15px 40px;
+    font-size: 20px;
     border: none;
     border-radius: 30px;
     background: #ff4d6d;
@@ -56,21 +63,21 @@ button {
 }
 button:hover {background:#ff1e4d;}
 
-/* Kartičky */
+/* Kartičky väčšie */
 .cards {
     display: grid;
-    grid-template-columns: repeat(3, 140px);
-    gap: 20px;
+    grid-template-columns: repeat(3, 200px);
+    gap: 25px;
     margin-top: 30px;
     position: relative;
 }
 .card {
-    width: 140px;
-    height: 180px;
+    width: 200px;
+    height: 250px;
     perspective: 1000px;
     cursor: pointer;
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(50px);
     animation: showCard 0.6s forwards;
 }
 .card:nth-child(1){animation-delay:0.1s}
@@ -100,27 +107,27 @@ button:hover {background:#ff1e4d;}
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
     overflow: hidden;
 }
 .card-front {
     background: #fff5e6; 
     color: #b11226; 
-    border: 2px solid #b11226; 
-    box-shadow: 0 0 10px #ffecb3;
+    border: 3px solid #b11226; 
+    box-shadow: 0 0 15px #ffecb3;
 }
 .card-back {
     background: linear-gradient(135deg, #b11226, #138a36);
     color: white;
     transform: rotateY(180deg);
-    box-shadow: 0 0 10px #fff;
-    font-size: 20px;
+    box-shadow: 0 0 15px #fff;
+    font-size: 22px;
     font-weight: bold;
     position: relative;
 }
 
-/* Iskričky na kartičkách */
+/* Iskričky */
 .sparkle {
     position: absolute;
     width: 6px;
@@ -137,31 +144,32 @@ button:hover {background:#ff1e4d;}
 
 #nextAfterCards {display:none;}
 
-/* Obálka a papier */
+/* Obálka väčšia a lepšia animácia */
 .envelope {
-    width: 260px;
-    height: 180px;
+    width: 320px;
+    height: 220px;
     background: #c1121f;
     position: relative;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     cursor:pointer;
+    box-shadow: 0 0 20px #fff5e6;
 }
 .paper {
-    width: 220px;
-    height: 260px;
+    width: 280px;
+    height: 320px;
     background: #fff;
     color: #000;
     position: absolute;
-    bottom: -260px;
+    bottom: -320px;
     left: 20px;
-    padding: 20px;
+    padding: 25px;
     box-sizing: border-box;
-    border-radius:10px;
-    transition: bottom 1s;
+    border-radius:12px;
+    transition: bottom 1.5s;
 }
 .paper h2 {color: #c1121f;}
-.paper p {margin-top:10px; line-height:1.4;}
+.paper p {margin-top:12px; line-height:1.5;}
 </style>
 </head>
 <body>
@@ -186,13 +194,13 @@ for(let i=0;i<50;i++){
 
 <!-- Úvod -->
 <section id="intro" class="active">
-    <h1>Toto je pre moju<br>najkrajšiu ženu ❤️</h1>
+    <h1 style="font-size: 60px; text-shadow: 2px 2px 10px #000;">Pre moju<br>najkrajšiu ženu ❤️</h1>
     <button onclick="goToCards()">Ďalej</button>
 </section>
 
 <!-- Kartičky -->
 <section id="cardsPage">
-    <h1>Otoč všetky kartičky 🎄</h1>
+    <h1 style="font-size:40px;">Otoč všetky kartičky 🎄</h1>
     <div class="cards" id="cardsContainer">
         <div class="card" onclick="flip(this)"><div class="card-inner"><div class="card-front">?</div><div class="card-back">Iba ❄️</div></div></div>
         <div class="card" onclick="flip(this)"><div class="card-inner"><div class="card-front">?</div><div class="card-back">ty 🎄</div></div></div>
@@ -253,7 +261,7 @@ function openLetter(){
 function addSparklers(){
     const cards=document.querySelectorAll(".card-back");
     cards.forEach(card=>{
-        for(let i=0;i<5;i++){
+        for(let i=0;i<7;i++){
             let s=document.createElement("div");
             s.className="sparkle";
             s.style.left=Math.random()*100+"%";
@@ -264,6 +272,5 @@ function addSparklers(){
     });
 }
 </script>
-
 </body>
 </html>
